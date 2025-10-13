@@ -14,7 +14,7 @@ document.getElementById("formCap").addEventListener("submit", async function (e)
     };
 
     try {
-        const response = await fetch("URL_DO_SEU_WEBAPP", {
+        const response = await fetch("https://script.google.com/macros/s/AKfycby-uR7QqrDt2302cVrTUvw6e48nP3Nuu1gljh0iER76VGzMhY9tvcrgLPwOTeaoL4S5/exec", {
             method: "POST",
             body: JSON.stringify(data),
             headers: { "Content-Type": "application/json" },
