@@ -1,41 +1,28 @@
-document.getElementById("formCap").addEventListener("submit", async function (e) {
-    e.preventDefault();
+function doPost(e) {
+  var output = ContentService.createTextOutput();
+  output.setMimeType(ContentService.MimeType.JSON);
 
-    const msg = document.getElementById("msg");
-    msg.textContent = "Enviando dados...";
+  try {
+    // Pega a planilha e a aba chamada "Respostas"
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Respostas");
+    
+    // Converte o POST recebido em objeto JSON
+    var data = JSON.parse(e.postData.contents);
 
-    const form = e.target;
-    const file = form.fileInput.files[0];
-    const reader = new FileReader();
+    // Adiciona uma nova linha: Data | Código | Produto | Diâmetro
+    sheet.appendRow([
+      new Date(),
+      data.codigo,
+      data.produto,
+      data.diametro
+    ]);
 
-    reader.onload = async function () {
-        const imageBase64 = reader.result.split(",")[1];
+    output.setContent(JSON.stringify({ status: "ok" }));
+  } catch (err) {
+    output.setContent(JSON.stringify({ status: "error", message: err.message }));
+  }
 
-        const data = {
-            codigo: form.codigo.value,
-            produto: form.produto.value,
-            diametro: form.diametro.value,
-            imagem: imageBase64,
-        };
-
-        try {
-            const response = await fetch("https://script.google.com/macros/s/AKfycby-uR7QqrDt2302cVrTUvw6e48nP3Nuu1gljh0iER76VGzMhY9tvcrgLPwOTeaoL4S5/exec", {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: { "Content-Type": "application/json" },
-            });
-
-            if (response.ok) {
-                msg.textContent = "✅ Dados enviados com sucesso!";
-                form.reset();
-            } else {
-                msg.textContent = "❌ Erro ao enviar. Tente novamente.";
-            }
-        } catch (error) {
-            console.error(error);
-            msg.textContent = "⚠️ Falha de conexão com o servidor.";
-        }
-    };
-
-    reader.readAsDataURL(file);
-});
+  // Cabeçalho CORS básico pra aceitar requisições do GitHub Pages
+  output.setHeader("Access-Control-Allow-Origin", "*");
+  return output;
+}
