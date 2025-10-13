@@ -19,17 +19,19 @@
 
             <h1>Process Capability</h1>
 
-            <form id="formCap">
+            <form 
+            name="dadosCapabilidade" 
+            action="https://sheetdb.io/api/v1/diu9gggbuf1l2" method="post">
                 <p>
-                    <input type="number" placeholder="Part number" name="codigo" id="icodigo" required>
+                    <input type="number" placeholder="Part number" name="data[codigo]" id="icodigo" required>
                 </p>
 
                 <p>
-                    <input type="text" placeholder="Product Name" name="produto" id="iproduto" required>
+                    <input type="text" placeholder="Product Name" name="data[produto]" id="iproduto" required>
                 </p>
 
                 <p>
-                    <input type="number" placeholder="Diameter (mm)" name="diametro" id="idiametro" required>
+                    <input type="number" placeholder="Diameter (mm)" name="data[diametro]" id="idiametro" required>
                 </p>
 
                 <!--
