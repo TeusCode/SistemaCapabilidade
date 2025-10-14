@@ -30,12 +30,12 @@ main #inserir {
     border-radius: 10px;
 }
 
-main div form img {
+/*main div form img {
     width: 150px;
     margin-top: 20px;
     border: 1px solid purple;
     border-radius: 5px;
-}
+}*/
 
 div input {
     height: 35px;
@@ -46,9 +46,10 @@ div input {
 }
 
 .botao {
-    background-color: #1f9191;
+    background: linear-gradient(to right, rgb(53, 184, 255), rgb(0, 77, 149));
     width: 150px;
     height: 40px;
+    border: 0px;
     border-radius: 5px;
     cursor: pointer;
     padding: 10px;
@@ -56,6 +57,20 @@ div input {
 }
 
 .botao:hover {
-    background-color: rgb(126, 204, 200);
-    color: white;
+    background: linear-gradient(to right, rgb(47, 158, 255), rgba(0, 77, 149, 0.999));
+}
+
+.loding {
+    width: 20px;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    form {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
