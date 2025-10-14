@@ -46,7 +46,7 @@ div input {
 }
 
 .botao {
-    background: linear-gradient(to right, rgb(53, 184, 255), rgb(0, 77, 149));
+    background: linear-gradient(to right, #243882, #00133b);
     width: 150px;
     height: 40px;
     border: 0px;
@@ -57,7 +57,7 @@ div input {
 }
 
 .botao:hover {
-    background: linear-gradient(to right, rgb(47, 158, 255), rgba(0, 77, 149, 0.999));
+     background: linear-gradient(to right, #243882bd, #00133bb8);
 }
 
 .loding {
