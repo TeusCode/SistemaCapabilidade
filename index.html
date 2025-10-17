@@ -21,15 +21,20 @@
 
             <form id="formCap" name="dadosCapabilidade" action="https://sheetdb.io/api/v1/diu9gggbuf1l2" method="post">
                 <p>
-                    <input type="number" placeholder="Part number" name="codigo" id="icodigo" required>
-                </p>
-
-                <p>
                     <input type="text" placeholder="Product Name" name="produto" id="iproduto" required>
                 </p>
-
                 <p>
-                    <input step="any" type="number" placeholder="Diameter (mm)" name="diametro" id="idiametro" required>
+                    <input type="number" placeholder="Component number" name="codigo" id="icodigo" required>
+                </p>
+                <p>
+                    <input type="text" placeholder="Feature" id="icaracteristica" name="caracteristica">
+                </p>
+                <p>
+                    <input type="text" id="imetMedicao" name="metMedicao" placeholder="Measurement method">
+                </p>
+                <p> Specs:
+                    <input class="inpMn" id="imin" step="any" type="number" placeholder="Máx">
+                    <input class="inpMn" id="imax" step="any" type="number" placeholder="Mín">
                 </p>
 
                 <!--
@@ -41,9 +46,15 @@
                 <button class="botao" type="submit">
                     Cadastrar
                 </button>
+                <!-- <button class="prox"> > </button>
             </form>
+            <form id="formMedidas" action="">
 
-            <p id="msg"></p>
+
+            </form>
+        -->
+
+                <p id="msg"></p>
         </div>
     </main>
 

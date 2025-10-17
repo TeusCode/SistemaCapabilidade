@@ -45,6 +45,10 @@ div input {
     margin-bottom: 15px;
 }
 
+.inpMn {
+    width: 70px;
+}
+
 .botao {
     background: linear-gradient(to right, #243882, #00133b);
     width: 150px;
@@ -57,7 +61,17 @@ div input {
 }
 
 .botao:hover {
-     background: linear-gradient(to right, #243882bd, #00133bb8);
+    background: linear-gradient(to right, #243882bd, #00133bb8);
+}
+
+.prox {
+    border: 0px;
+    border-radius: 5px;
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(to right, #243882, #00133b);
+    color: white;
+    font-weight: bold;
 }
 
 .loding {
@@ -73,4 +87,8 @@ div input {
     to {
         transform: rotate(360deg);
     }
+}
+
+#formCap {
+    display: block;
 }
