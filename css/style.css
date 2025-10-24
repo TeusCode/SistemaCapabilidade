@@ -4,12 +4,17 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.651)),
+        url('../img/background.jpg') no-repeat center center;
+    background-repeat: no-repeat;
+    background-size: auto;
     width: 100vw;
-    height: 90vh;
-    background-color: white;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,14 +33,9 @@ main #inserir {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.37);
     padding: 15px;
     border-radius: 10px;
+    display: inline-block;
 }
 
-/*main div form img {
-    width: 150px;
-    margin-top: 20px;
-    border: 1px solid purple;
-    border-radius: 5px;
-}*/
 
 div input {
     height: 35px;
@@ -64,16 +64,6 @@ div input {
     background: linear-gradient(to right, #243882bd, #00133bb8);
 }
 
-/**
-.prox {
-    border: 0px;
-    border-radius: 5px;
-    width: 50px;
-    height: 40px;
-    background: linear-gradient(to right, #243882, #00133b);
-    color: white;
-    font-weight: bold;
-} */
 
 .loding {
     width: 20px;
@@ -90,6 +80,6 @@ div input {
     }
 }
 
-#formCap {
-    display: block;
+#formCap img {
+    display: none;
 }

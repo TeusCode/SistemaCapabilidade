@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Capabilidade</title>
     <link rel="stylesheet" href="css/style.css">
+    <<link rel="stylesheet" href="css/medias.css" media="(min-width: 768px)">
 </head>
 
 <body>
@@ -19,7 +20,9 @@
 
             <h1>Process Capability</h1>
 
-            <form id="formCap" name="dadosCapabilidade" action="https://sheetdb.io/api/v1/diu9gggbuf1l2" method="post">
+            <form id="formCap" name="dadosCapabilidade" action="" method="post">
+                <img src="img/inicial.jpg" alt="">
+                
                 <p>
                     <input type="text" placeholder="Nome do Produto" name="produto" id="iproduto" required>
                 </p>
@@ -37,25 +40,17 @@
                     <input width="50px" class="inpMn" id="imax" step="any" type="number" placeholder="Mín">
                 </p>
 
-                <!--
-        <p>
-          <input type="file" id="fileInput" name="fileInput" accept="image/*" required>
-        </p> -->
-
                 <br>
                 <button class="botao" type="submit">
                     Cadastrar
                 </button>
-                <!-- <button class="prox"> > </button>
-            </form>
-            <form id="formMedidas" action="">
-
-
-            </form>
-        -->
 
                 <p id="msg"></p>
+
         </div>
+
+
+
     </main>
 
     <script src="js/script.js"></script>
