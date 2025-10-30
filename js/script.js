@@ -21,7 +21,7 @@ const addLoading = (botaoElement) => {
 
 const removeLoading = (botaoElement, success = true) => {
     const originalText = botaoElement.getAttribute('data-original-text') || 'Cadastrar';
-    botaoElement.innerHTML = success ? '✅' : '❌';
+    botaoElement.innerHTML = success ? 'Enviado!' : 'Falhou!';
     
     setTimeout(() => {
         botaoElement.innerHTML = originalText;  
