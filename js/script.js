@@ -1,121 +1,70 @@
-const form = document.querySelector('#formCap');
-const formMed = document.getElementById('formMed');
+const endPoint = 'https://sheetdb.io/api/v1/p799rro0egbsq' //URL da API 
+const formC = document.querySelector('#formCap')
 
-const botaoCadastroCap = document.querySelector('#formCap .botao') || document.querySelector('.botao');
-const API_URL = 'https://sheetdb.io/api/v1/p799rro0egbsq'; 
-
-const voltar = () => {
-    window.location.href = "index.html";
+//Ligação dos inputs:
+//Captura os dados dos inputs e cria um objeto com propriedades (chave) com o (valor) dos inputs
+const dadosC = {
+    responsavel: document.querySelector("#iresponsavel"),
+    produto: document.querySelector('#iproduto'),
+    codigo: document.querySelector('#icodigo'),
+    caracteristica: document.querySelector('#icaracteristica'),
+    medicao: document.querySelector('#imetMedicao'),
+    minimo: document.querySelector('#imin'),
+    maximo: document.querySelector('#imax')
 };
 
-const proxPagina = () => {
+const botaoC = document.querySelector('#botaoC') //Botão Cadastrar
+
+const addLoading = () => { //Cria a interface de carregamento
+    botaoC.innerHTML = '<img src="../img/loding.png" class="loading">'
+
+};
+
+const removeLoading = () => {
+    botaoC.innerHTML = 'Cadastrar'
+}
+
+const proxPag = () => {
     window.location.href = "medidas.html";
 };
 
+const enviarDadosC = (event) => { //Envia os dados para a planilha
 
-const addLoading = (botaoElement) => {
-    botaoElement.setAttribute('data-original-text', botaoElement.innerHTML); // 
-    botaoElement.innerHTML = '<img class="loding" src="img/loding.png" alt="Carregando...">';
-    botaoElement.disabled = true;
-};
+    event.preventDefault() //Reseta o comportamento padrão do submit
 
-const removeLoading = (botaoElement, success = true) => {
-    const originalText = botaoElement.getAttribute('data-original-text') || 'Cadastrar';
-    botaoElement.innerHTML = success ? 'Enviado!' : 'Falhou!';
-    
-    setTimeout(() => {
-        botaoElement.innerHTML = originalText;  
-        botaoElement.disabled = false;
-        botaoElement.removeAttribute('data-original-text');
-    }, 1500);
-};
+    if (dadosC.responsavel.value === "" || dadosC.responsavel.value === "-") { //Valida se o compo select é vazio
+        alert('Preencha o responsável!')
+        formC.reset()
+        return;
 
-const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    addLoading(botaoCadastroCap);
-
-    const caracteristica = document.querySelector('#icaracteristica').value;
-    const medicao = document.querySelector('#imetMedicao').value;
-    const codigo = document.querySelector('#icodigo').value;
-    const produto = document.querySelector('#iproduto').value;
-    const minimo = document.querySelector('#imin').value;
-    const maximo = document.querySelector('#imax').value;
-
-    const dataToSend = {
-        'Produto': produto,
-        'Código': codigo,
-        'Caracteristica': caracteristica,
-        'Medicao': medicao,
-        'Máximo': maximo,
-        'Mínimo': minimo
-    };
-
-    try {
-        const response = await fetch(API_URL, {
-            method: 'POST', 
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(dataToSend)
-        });
-
-        if (!response.ok) {
-            throw new Error(`Erro de rede ou API: ${response.statusText}`);
-        }
-
-        removeLoading(botaoCadastroCap, true);
-        event.target.reset();
-      
-        setTimeout(proxPagina, 1500); 
-
-    } catch (error) {
-        console.error('Erro ao enviar dados do formulário Cap:', error);
-        removeLoading(botaoCadastroCap, false);
     }
+
+
+    addLoading()
+
+    fetch(endPoint, {
+        method: 'post', //Método de envio
+        headers: {       //Cabeçarios
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ //Converte o objeto em String
+            Responsável: dadosC.responsavel.value,
+            Produto: dadosC.produto.value,
+            Código: dadosC.codigo.value,
+            Caracteristica: dadosC.caracteristica.value,
+            Medição: dadosC.medicao.value,
+            Máximo: dadosC.maximo.value,
+            Mínimo: dadosC.minimo.value
+        })
+
+    }).then(() => { //Executa depois que a função fetch (função assíncrona (não tem um tempo certo para executar)) termina!
+        removeLoading();
+        formC.reset();
+        proxPag();
+    })
+
 };
 
-if (form) {
-    form.addEventListener('submit', handleSubmit);
-}
-
-const enviarMedida = async (event) => {
-    event.preventDefault();
-
-    const botaoEnviarMedida = document.querySelector('#formMed .botao') || botaoCadastroCap; 
-    addLoading(botaoEnviarMedida);
-
-    const medida = document.getElementById('medida').value;
-
-    try {
-        const response = await fetch(API_URL, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-
-            body: JSON.stringify({
-                data: [
-                    { "Medida": medida } 
-                ]
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`Erro de rede ou API: ${response.statusText}`);
-        }
-
-        removeLoading(botaoEnviarMedida, true);
-        event.target.reset(); 
-        
-    } catch (error) {
-        console.error('Erro ao enviar a medida:', error);
-        removeLoading(botaoEnviarMedida, false);
-    }
-};
-
-if (formMed) {
-    formMed.addEventListener('submit', enviarMedida);
-}
+//Observa o submit do form de cadastro:
+formC.addEventListener('submit', enviarDadosC);

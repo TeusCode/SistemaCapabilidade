@@ -21,41 +21,43 @@
 
             <h1>Process Capability</h1>
 
-            <form id="formCap" name="dadosCapabilidade" action="" method="post">
+            <form id="formCap" name="dadosCapabilidade" method="post">
+                <select class="input select" name="responsavel" id="iresponsavel">
+                    <option value="">Selecione</option>
+                    <option value="supervisor">Supervisor</option>
+                    <option value="analista">Analista</option>
+                    <option value="gerente">Gerente</option>
+                </select>
                 <p>
-                    <input type="text" autocomplete="off" placeholder="Nome do Produto" name="produto" id="iproduto"
-                        required>
+                    <input class="input" type="text" autocomplete="off" placeholder="Nome do Produto" name="produto"
+                        id="iproduto" required>
                 </p>
                 <p>
-                    <input type="number" autocomplete="off" placeholder="Número do componente" name="codigo"
-                        id="icodigo" required>
+                    <input class="input" type="number" autocomplete="off" placeholder="Número do componente"
+                        name="codigo" id="icodigo" required>
                 </p>
                 <p>
-                    <input type="text" autocomplete="off" placeholder="Caracteristica" id="icaracteristica"
-                        name="caracteristica">
+                    <input class="input" type="text" autocomplete="off" placeholder="Caracteristica"
+                        id="icaracteristica" name="caracteristica">
                 </p>
                 <p>
-                    <input type="text" autocomplete="off" id="imetMedicao" name="metMedicao"
+                    <input class="input" type="text" autocomplete="off" id="imetMedicao" name="metMedicao"
                         placeholder="Método de medição">
                 </p>
-                <p> Espec:
-                    <input width="50px" autocomplete="off" class="inpMn" id="imin" step="any" type="number"
-                        placeholder="Máx">
-                    <input width="50px" autocomplete="off" class="inpMn" id="imax" step="any" type="number"
-                        placeholder="Mín">
-                </p>
+                <div class="limites">
+                    <p> Limites:
+                        <input width="50px" autocomplete="off" class="inpMn" id="imin" step="any" type="number"
+                            placeholder="Mín">
+                        <input width="50px" autocomplete="off" class="inpMn" id="imax" step="any" type="number"
+                            placeholder="Máx">
+                    </p>
+                </div>
 
                 <br>
-                <button class="botao" type="submit">
-                    Cadastrar
+                <button id="botaoC" class="botao" type="submit">
+                    Cadastro
                 </button>
-
-                <p id="msg"></p>
-
         </div>
-
-
-
     </main>
 
     <script src="js/script.js"></script>

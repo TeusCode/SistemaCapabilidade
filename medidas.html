@@ -21,16 +21,16 @@
 
             <h1>Process Capability</h1>
             <br>
-            <form id="formMed" name="medidas" action="" method="post">
+            <form id="formMed" name="medidas" method="post">
                 <p> Medições:</p>
                 <br>
-                <p><input autocomplete="off" width="0px" class="medida" id="medida" step="any" type="number"
+                <p><input class="input" autocomplete="off" width="0px" class="medida" id="imedida" step="any" required type="number"
                         placeholder="Adicione Medição"></p>
 
 
 
-                <button class="botao" type="submit">Adicionar Medidas</button>
-                <p><input class="btnVoltar" type="button" value="Voltar" onclick="voltar()"></p>
+                <button class="botao" id="botaoM" type="submit">Adicionar Medidas</button>
+                <p><input onclick="home()" class="btnVoltar" type="button" value="Voltar"></p>
 
                 <p id="msg"></p>
         </div>
@@ -38,7 +38,7 @@
 
     </main>
 
-    <script src="js/script.js"></script>
+    <script src="js/scriptM.js"></script>
 </body>
 
 </html>
