@@ -10,7 +10,7 @@ const dadosM = {
 const botaoM = document.querySelector('#botaoM') //Botão Enviar medida
 
 const addLoading = () => { //Cria a interface de carregamento
-    botaoM.innerHTML = '<img src="../img/loding.png" class="loading">'
+    botaoM.innerHTML = '<img src="../img/loading.png" class="loading">'
 
 };
 
