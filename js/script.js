@@ -16,7 +16,7 @@ const dadosC = {
 const botaoC = document.querySelector('#botaoC') //Botão Cadastrar
 
 const addLoading = () => { //Cria a interface de carregamento
-    botaoC.innerHTML = '<img src="../img/loading.png" class="loading">'
+    botaoC.innerHTML = '<img src="img/loading.png" class="loading">'
 
 };
 
